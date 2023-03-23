@@ -1,4 +1,7 @@
 package Ejercicio2.dominio;
+
+import java.util.Arrays;
+
 /*Copyright [año] [Luis Miguel Urbez Villar]
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -63,18 +66,6 @@ public class Tablero {
         int vecinosVivos = 0;
         for (i = 0; i < DIMENSION; i++) {
             for (j = 0; j < DIMENSION; j++) {
-                if (i > 0 && j > 0 && estadoActual[i - 1][j - 1] == 1) {
-                    vecinosVivos++;
-                }
-                if (i > 0 && estadoActual[i - 1][j] == 1) {
-                    vecinosVivos++;
-                }
-                if (i > 0 && j < DIMENSION - 1 && estadoActual[i - 1][j + 1] == 1) {
-                    vecinosVivos++;
-                }
-                if (j > 0 && estadoActual[i][j - 1] == 1) {
-                    vecinosVivos++;
-                }
                 if (j < DIMENSION - 1 && estadoActual[i][j + 1] == 1) {
                     vecinosVivos++;
                 }
@@ -87,8 +78,31 @@ public class Tablero {
                 if (i < DIMENSION - 1 && j < DIMENSION - 1 && estadoActual[i + 1][j + 1] == 1) {
                     vecinosVivos++;
                 }
+                if (i > 0 && j > 0 && estadoActual[i - 1][j - 1] == 1) {
+                    vecinosVivos++;
+                }
+                if (i > 0 && estadoActual[i - 1][j] == 1) {
+                    vecinosVivos++;
+                }
+                if (i > 0 && j < DIMENSION - 1 && estadoActual[i - 1][j + 1] == 1) {
+                    vecinosVivos++;
+                }
+                if (j > 0 && estadoActual[i][j - 1] == 1) {
+                    vecinosVivos++;
+                }
+
             }
         }
         return vecinosVivos;
+    }
+    @Override
+    public String toString() {
+       String resultadoFinal = "";
+       for(int i = 0; i<DIMENSION; i++){
+           for(int j = 0; j< DIMENSION; j++){
+               resultadoFinal += + estadoActual[i][j] + " ";
+           }
+       }
+       return resultadoFinal;
     }
 }
